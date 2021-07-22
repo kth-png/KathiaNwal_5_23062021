@@ -24,7 +24,7 @@ fetch(url)
     for (furniture of furnitures) {
       //création des éléments pour afficher les données
       let figure = createNode('figure')
-      figure.classList.add('card', 'fig-width')
+      figure.classList.add('fig-width')
       append(ul, figure)
       let given_id = furniture._id
       figure.addEventListener('click', function (e) {
@@ -79,13 +79,17 @@ fetch(url)
           .catch(function (error) {
             alert(error)
           })
-          console.log(urlId)
       })
 
       let img = createNode('img')
       img.classList.add('card-img-top')
       append(figure, img)
       img.src = furniture.imageUrl
+     //if(img.naturalHeight > 4000){
+       img.height = "280"
+       img.width ="325"
+     
+      console.log(img.naturalWidth)
 
       let figcaption = createNode('figcaption')
       figcaption.classList.add('article-info')
