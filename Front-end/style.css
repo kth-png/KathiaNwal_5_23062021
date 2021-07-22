@@ -22,7 +22,6 @@ footer{
   background-color: var(--secondary-color);
   justify-content: center;
   display: flex;
-  padding: 5%;
 }
 nav{
     width: 20%;

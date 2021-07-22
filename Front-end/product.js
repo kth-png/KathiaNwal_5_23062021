@@ -24,3 +24,6 @@ fetch(urlId)
 
   let persChoice = createNode('option')
 })
+.catch( function (error){
+alert('error')
+})
