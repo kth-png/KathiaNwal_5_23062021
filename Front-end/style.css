@@ -15,12 +15,27 @@ header {
   padding: 0 20px 0 20px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 }
+footer{
+  margin-top: 3rem;
+}
 .footer{
   background-color: var(--secondary-color);
   flex-direction: column;
   align-items: center;
   display: flex;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.footer img{
+  max-width: 170px;
+}
+
+.eshop{
+  display: flex;
+  justify-content: space-between;
+}
+
+.eshop .elogo{
+  font-size: 2rem;
 }
 nav{
     width: 30%;
@@ -64,7 +79,7 @@ a {
   color: var(--primary-color);
 }
 
-span {
+.article-info span {
   padding-left: 20px;
 }
 .article-info{
@@ -114,10 +129,82 @@ max-width: 100%;
 }
 
 main .container{
-  width: 50%;
+  width: 60%;
 }
 
-p.logo{
+.elogo{
   font-family: 'belligerent_madnessregular', Arial, sans-serif;
   font-size: 4rem;
+}
+
+.divTitle{
+  margin-bottom: 2rem;
+}
+.divTitle span, .unit{
+  font-weight: lighter;
+  font-size: smaller;
+}
+.divTitle h2{
+  margin: 0;
+}
+
+.divImg{
+  display: flex;
+  grid-gap: 4%;
+}
+
+.divPers > * {
+  margin-bottom: 2rem;
+  min-width: 320px;
+}
+
+.divPers p{
+  text-align: justify;
+}
+
+.divPrice {
+  display: flex;
+  flex-direction: column;
+}
+
+.divPrice h3, .divPrice span{
+  text-align: end;
+  margin-bottom: 0 !important;
+}
+
+div.select{
+  display: flex;
+  justify-content: space-between;
+}
+@media (max-width: 397px) {
+  header{
+    flex-direction: column;
+  }
+  nav{
+    width:50%;
+  }
+ 
+  nav ul{
+    margin: 0;
+  }
+  p.logo{
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 993px){
+  div.artMedia, .center{
+    display: flex;
+    flex-direction: column !important;
+    align-items: center;
+  }
+
+  /*.divPers{
+    min-width: 320px;
+    margin-top: 1rem;
+  }
+
+  .img-display{
+    width:90%;
+  }*/
 }
