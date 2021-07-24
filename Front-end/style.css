@@ -71,16 +71,21 @@ ul {
   padding: 0;
   margin: 1rem 0 1rem 0;
 }
-a {
-  display: flex;
-  align-items: center;
-  margin: 10px 10px;
+a, a:hover {
   text-decoration: none;
   color: var(--primary-color);
 }
 
+li a {
+  display: flex;
+  align-items: center;
+  margin: 10px 10px;
+}
+
 .article-info span {
   padding-left: 20px;
+  margin-right: 5px;
+  white-space: nowrap;
 }
 .article-info{
   display: flex;
@@ -97,7 +102,7 @@ a {
   margin: 0 1rem 2rem;
 }
 
-.fig-width img{
+figure img{
   object-fit: cover;
 }
 
@@ -116,12 +121,8 @@ overflow: hidden;
 font-weight: bold;
 }
 
-figcaption span{
-  margin-right: 5px;
-  white-space: nowrap;
-}
 figure{
-  height: 40%;
+  margin: 0;
 }
 
 .img-display{
