@@ -2,7 +2,7 @@
     font-family: 'belligerent_madnessregular';
     src: url('belligerent-webfont.eot');
     src: url('belligerent-webfont.eot?#iefix') format('embedded-opentype'),
-         url('belligerent-webfont.woff2') format('woff2'),
+        /* url('belligerent-webfont.woff2') format('woff2'),*/
          url('belligerent-webfont.woff') format('woff'),
          url('belligerent-webfont.ttf') format('truetype'),
          url('belligerent-webfont.svg#belligerent_madnessregular') format('svg');

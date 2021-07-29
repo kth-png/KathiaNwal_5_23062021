@@ -52,10 +52,10 @@ fetch(url)
       let span = createNode('span')
       span.classList.add('card-text')
       append(figcaption, span)
-      span.innerHTML = `${Math.ceil(furniture.price / 1000)} €`
+      span.innerHTML = `${Math.ceil(furniture.price / 100)} €`
     }
   })
   //Message d'erreur
   .catch(function (error) {
-    alert(error)
+    console.log(error)
   })

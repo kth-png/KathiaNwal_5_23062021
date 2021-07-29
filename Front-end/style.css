@@ -4,7 +4,7 @@
 }
 
 body {
-      font-family: 'Nunito', sans-serif !important;
+  font-family: 'Nunito', sans-serif !important;
 }
 
 header {
@@ -13,33 +13,35 @@ header {
   align-items: center;
   background: var(--secondary-color);
   padding: 0 20px 0 20px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 }
-footer{
+footer {
   margin-top: 3rem;
 }
-.footer{
+.footer {
   background-color: var(--secondary-color);
   flex-direction: column;
   align-items: center;
   display: flex;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
-.footer img{
+.footer img {
   max-width: 170px;
 }
 
-.eshop{
+.eshop {
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
 }
 
-.eshop .elogo{
+.eshop .elogo {
   font-size: 2rem;
 }
-nav{
-    width: 30%;
-    max-width: 180px;
+nav {
+  width: 30%;
+  max-width: 180px;
 }
 .logo {
   width: 18%;
@@ -54,8 +56,8 @@ nav{
   margin-top: 20px;
 }
 h1 {
-font-weight: bold;
-margin: 1rem 0 1rem;
+  font-weight: bold;
+  margin: 1rem 0 1rem;
 }
 
 .home-article {
@@ -64,14 +66,14 @@ margin: 1rem 0 1rem;
 .card img {
   max-height: 179.4px;
   object-fit: cover;
- 
 }
 ul {
   list-style: none;
   padding: 0;
   margin: 1rem 0 1rem 0;
 }
-a, a:hover {
+a,
+a:hover {
   text-decoration: none;
   color: var(--primary-color);
 }
@@ -87,71 +89,78 @@ li a {
   margin-right: 5px;
   white-space: nowrap;
 }
-.article-info{
+.article-info {
   display: flex;
   justify-content: space-between;
   padding-top: 5px;
 }
 
-.fig-width{
+.fig-width {
   width: 25%;
   min-width: 210px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  border-bottom-left-radius: calc(.25rem - 1px);
-  border-bottom-right-radius: calc(.25rem - 1px);
+  border-bottom-left-radius: calc(0.25rem - 1px);
+  border-bottom-right-radius: calc(0.25rem - 1px);
   margin: 0 1rem 2rem;
 }
 
-figure img{
+figure img {
   object-fit: cover;
 }
 
-.furnitures-layout{
+.furnitures-layout {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 }
 
-figcaption p{
-margin-left: 5px;
-max-width: 70%;
-white-space: nowrap;
-text-overflow: ellipsis;
-overflow: hidden;
-font-weight: bold;
+figcaption p {
+  margin-left: 5px;
+  max-width: 70%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-weight: bold;
 }
 
-figure{
+figure {
   margin: 0;
 }
 
-.img-display{
-max-width: 100%;
+.img-display {
+  max-width: 100%;
 }
 
-main .container{
+main .container {
   width: 60%;
 }
 
-.elogo{
+.elogo {
   font-family: 'belligerent_madnessregular', Arial, sans-serif;
   font-size: 4rem;
+  padding-left: 40px;
+  margin-bottom: 15px;
 }
 
-.divTitle{
+.divTitle {
   margin-bottom: 2rem;
 }
-.divTitle span, .unit{
+.divTitle span,
+.unit {
   font-weight: lighter;
   font-size: smaller;
 }
-.divTitle h2{
+.divTitle h2 {
   margin: 0;
 }
 
-.divImg{
+.divImg {
   display: flex;
   grid-gap: 4%;
+}
+.divPers {
+  display: flex;
+  flex-direction: column;
 }
 
 .divPers > * {
@@ -159,53 +168,62 @@ main .container{
   min-width: 320px;
 }
 
-.divPers p{
+.divPers p {
   text-align: justify;
 }
 
+.divPers button {
+  align-self: center;
+}
 .divPrice {
   display: flex;
   flex-direction: column;
 }
 
-.divPrice h3, .divPrice span{
+.divPrice h3,
+.divPrice span {
   text-align: end;
   margin-bottom: 0 !important;
 }
 
-div.select{
+div.select {
   display: flex;
   justify-content: space-between;
 }
+
+.addBasket {
+  border-radius: 10px;
+  background-color: var(--primary-color);
+  color: white;
+  border: 1px solid var(--primary-color);
+}
 @media (max-width: 397px) {
-  header{
+  header {
     flex-direction: column;
   }
-  nav{
-    width:50%;
+  nav {
+    width: 50%;
   }
- 
-  nav ul{
+
+  nav ul {
     margin: 0;
   }
-  p.logo{
+  p.logo {
     font-size: 3rem;
   }
 }
 
-@media (max-width: 993px){
-  div.artMedia, .center{
+@media (max-width: 993px) {
+  div.artMedia,
+  .center {
     display: flex;
     flex-direction: column !important;
     align-items: center;
   }
-
-  /*.divPers{
-    min-width: 320px;
-    margin-top: 1rem;
-  }
-
-  .img-display{
-    width:90%;
-  }*/
 }
+ /*-------------------------- BAG.HTML ------------------------------*/
+.product-infos{
+  display: flex;
+  justify-content: space-around;
+}
+
