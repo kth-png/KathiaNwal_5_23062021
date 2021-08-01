@@ -110,9 +110,12 @@ fetch(productUrl)
     unit.classList.add('unit')
     unit.innerHTML = "Prix à l'unité"
 
+    let productBtnContainer = createNode('div')
+    append(formOrder, productBtnContainer)
+    productBtnContainer.classList.add("divAddBag")
     //créer le bouton ajouter au panier
     let button = createNode('button')
-    append(formOrder, button)
+    append(productBtnContainer, button)
     button.setAttribute('id', 'addBasket')
     button.innerHTML = 'Ajouter au panier'
     //écouter et ajouter au panier
@@ -122,12 +125,12 @@ fetch(productUrl)
       const choiceForm = artPers.value
       const quantiteSelect = choice.value
 
-      //mettre le choix de l'utilsateur dans une variable
+      //mettre le choix de l'utilisateur dans une variable
       let productOptions = {
         productName: datas.name,
         myId,
-        optionSelected: choiceForm,
-        quantity: quantiteSelect,
+        //optionSelected: choiceForm,
+        //quantity: quantiteSelect,
         price: (datas.price / 100),
       }
 

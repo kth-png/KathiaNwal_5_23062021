@@ -19,6 +19,15 @@ header {
 footer {
   margin-top: 3rem;
 }
+
+button {
+  border: none;
+  border-radius: 10px;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  font-size: .8rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
 .footer {
   background-color: var(--secondary-color);
   flex-direction: column;
@@ -31,9 +40,7 @@ footer {
 }
 
 .eshop {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
+  display: inline-block
 }
 
 .eshop .elogo {
@@ -158,26 +165,28 @@ main .container {
   display: flex;
   grid-gap: 4%;
 }
-.divPers {
+
+form > *{
+  margin-top: 2rem;
+}
+
+.divPers, .divPrice, .divAddBag {
   display: flex;
   flex-direction: column;
 }
 
 .divPers > * {
-  margin-bottom: 2rem;
   min-width: 320px;
 }
 
 .divPers p {
   text-align: justify;
 }
-
-.divPers button {
-  align-self: center;
+.divAddBag{
+  align-items: center;
 }
-.divPrice {
-  display: flex;
-  flex-direction: column;
+#addBasket {
+  width: 40%;
 }
 
 .divPrice h3,
@@ -222,8 +231,27 @@ div.select {
   }
 }
  /*-------------------------- BAG.HTML ------------------------------*/
+ #container-product-bag h2{
+   font-weight: bold;
+   text-align: center;
+   margin: 3rem 0 3rem 0;
+ }
 .product-infos{
   display: flex;
   justify-content: space-around;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.product-infos p {
+  width: 20%;
+  text-align: center;
+  margin-bottom: 0 !important;
 }
 
+.bag-bold{
+  font-weight: bold;
+}
+
+.btn-bag-delete, .deleteAll {
+  min-width: 117px;
+}
