@@ -7,9 +7,9 @@ function append(parent, el) {
   return parent.appendChild(el)
 }
 //Fonction de redirection
-function redirect() {
-  document.location.href = page
-}
+//function redirect() {
+ // document.location.href = page
+//}
 const page = 'produit.html'
 const ul = document.getElementById('furnitures')
 let url = 'http://localhost:3000/api/furniture'
@@ -21,21 +21,27 @@ fetch(url)
   .then(function (data) {
     let furnitures = data
     //Boucle de récupération des données
-    for (furniture of furnitures) {
+    for (let f = 0; f < furnitures.length; f++) {
+
       //création des éléments pour afficher les données
-      let link = createNode("a")
-      link.href = `${page}?id=${furniture._id}`
+      let link = createNode('a')
+      link.href = `${page}?id=${furnitures[f]._id}`
       link.classList.add('fig-width')
       append(ul, link)
       let figure = createNode('figure')
-      
-      figure.setAttribute("id",`"${furniture._id}"`)
+      figure.classList.add('home-figure')
+      link.addEventListener('click', (ev) => {
+        ev.stopPropagation()
+      })
+
+      figure.setAttribute('id', `"${furnitures[f]._id}"`)
       append(link, figure)
-      
+
       let img = createNode('img')
       img.classList.add('card-img-top')
       append(figure, img)
-      img.src = furniture.imageUrl
+      img.src = furnitures[f].imageUrl
+
       //Modification de la taille des images
       img.height = '280'
       img.width = '325'
@@ -47,12 +53,59 @@ fetch(url)
       let p = createNode('p')
       p.classList.add('card-title')
       append(figcaption, p)
-      p.innerHTML = furniture.name
+      p.innerHTML = furnitures[f].name
 
       let span = createNode('span')
       span.classList.add('card-text')
       append(figcaption, span)
-      span.innerHTML = `${Math.ceil(furniture.price / 100)} €`
+      span.innerHTML = `${Math.ceil(furnitures[f].price / 100)} €`
+
+      // création d'un bouton pour ajouter l'article au panier directement de la page d'accueil
+      let homeAddToCart = createNode('button')
+      homeAddToCart.classList.add('btn-add-to-cart')
+      append(figure, homeAddToCart)
+      homeAddToCart.innerHTML = 'Ajouter au panier'
+      homeAddToCart.addEventListener('click', (e) => {
+        e.preventDefault()
+        // Mettre la selection dans une variable
+        let selectFromHomepage = {
+          productName: furnitures[f].name,
+          myId: furnitures[f]._id,
+          optionSelected: furnitures[f].varnish[0],
+          quantity: 1,
+          price: furnitures[f].price / 100,
+        }
+        //---------------Local storage---------------
+        let productSaveInLocalStorage = JSON.parse(
+          localStorage.getItem('produit'),
+        )
+        //fonction ajout du produit sélectionné au local storage
+        const addLocalStorage = () => {
+          productSaveInLocalStorage.push(selectFromHomepage)
+          localStorage.setItem(
+            'produit',
+            JSON.stringify(productSaveInLocalStorage),
+          )
+        }
+        //fonction message de confirmation
+        const confirmMessage = () => {
+          if (
+            window.confirm(`Votre sélection: ${selectFromHomepage.quantity} ${furnitures[f].name} option: ${selectFromHomepage.optionSelected}, a été ajoutée au panier
+                [OK] voir le panier
+                [ANNULER] continuer votre shopping`)
+          ) {
+            window.location.href = 'bag.html'
+          }
+        }
+        if (productSaveInLocalStorage) {
+          addLocalStorage()
+          confirmMessage()
+        } else {
+          productSaveInLocalStorage = []
+          addLocalStorage()
+          confirmMessage()
+        }
+      })
     }
   })
   //Message d'erreur

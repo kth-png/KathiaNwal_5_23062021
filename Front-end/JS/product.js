@@ -49,6 +49,7 @@ fetch(productUrl)
 
     //Création du formulaire
     let formOrder = createNode('form')
+    formOrder.classList.add('formProduct')
     append(divPers, formOrder)
 
     let divFin = createNode('div')
@@ -119,8 +120,7 @@ fetch(productUrl)
     button.setAttribute('id', 'addBasket')
     button.innerHTML = 'Ajouter au panier'
     //écouter et ajouter au panier
-    let btnAdd = document.querySelector('#addBasket')
-    btnAdd.addEventListener('click', (event) => {
+    button.addEventListener('click', (event) => {
       event.preventDefault()
       const choiceForm = artPers.value
       const quantiteSelect = choice.value
@@ -129,8 +129,8 @@ fetch(productUrl)
       let productOptions = {
         productName: datas.name,
         myId,
-        //optionSelected: choiceForm,
-        //quantity: quantiteSelect,
+        optionSelected: choiceForm,
+        quantity: quantiteSelect,
         price: (datas.price / 100),
       }
 
@@ -168,7 +168,7 @@ fetch(productUrl)
     //Modifier le titre de la page en fonction du produit sélectionné
     let pageTitle = document.querySelector('title')
     pageTitle.innerHTML = `OriFurnit : ${datas.name}`
-    console.log(pageTitle.innerHTML)
+    
   })
   .catch(function (error) {
     console.log(error)
