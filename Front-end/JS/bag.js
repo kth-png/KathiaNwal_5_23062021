@@ -6,12 +6,15 @@ let totalToPay = document.querySelector('#totalToPay')
 //si le panier est vide afficher le panier est vide
 if (productSaveInLocalStorage === null) {
   const panierVide = `
-    <div class="product-infos">
+    <div id="product-infos" class="product-infos empty">
     <div> Le panier est vide <div>
     </div>
     `
   nBag.innerHTML = panierVide
   totalToPay.innerHTML = null
+  document.getElementById("totalToPay").style.display = "none";
+  document.getElementById("product-info").style.marginBottom = "0"
+  document.getElementById("product-infos").style.marginBottom = "0" 
 }
 //sinon afficher le contenu du localstorage
 else {
@@ -59,12 +62,11 @@ else {
     let btnBag = createNode('button')
     append(info, btnBag)
     btnBag.classList.add('btn-bag')
-    btnBag.innerHTML = 'voir l\'article'
+    btnBag.innerHTML = "voir l'article"
     const productPageRedirection = `produit.html?id=${productSaveInLocalStorage[j].myId}`
     btnBag.addEventListener('click', () => {
       window.location.href = productPageRedirection
     })
-    
 
     //écoute du bouton vider le panier et suppression du panier
     const clearCart = document.querySelector('.deleteAll')
@@ -77,36 +79,36 @@ else {
     //let productInLocalStorage = JSON.parse(localStorage.getItem('produit'))
     //let btnBagDeleteGroup = document.getElementsByClassName(".btnBagDelete")
     //function removeOneArticle(){
-      //for (let m= 0; m < productInLocalStorage.length; m++){
-        //let productIndex = productInLocalStorage.indexOf(m);
-        //productInLocalStorage.splice(productIndex, 1)
-        //localStorage.setItem('produit', JSON.stringify(productInLocalStorage))
-        //location.reload()
-      //}
-    //} 
+    //for (let m= 0; m < productInLocalStorage.length; m++){
+    //let productIndex = productInLocalStorage.indexOf(m);
+    //productInLocalStorage.splice(productIndex, 1)
+    //localStorage.setItem('produit', JSON.stringify(productInLocalStorage))
+    //location.reload()
+    //}
+    //}
     /*for (btnBagDelete in btnBagDeleteGroup){
       btnBagDelete.addEventListener('click', () => {
         removeOneArticle()
       })
     }*/
-      
-    //for (let m =0; m < productInLocalStorage.length; m++) {
-      //btnBagDelete.addEventListener('click', () => {
-        //productInLocalStorage.splice(m, 1)
-        //localStorage.setItem('produit', JSON.stringify(productInLocalStorage))
-       // if (productInLocalStorage.value = null) {
-        //localStorage.removeItem('produit')
-        //localStorage.removeItem('totalPrice')
-        //location.reload()
-       // } else {
-        //location.reload()
-        //}
 
-        //item.quantity -= 1
-        //console.log(productInLocalStorage)
-        //localStorage.setItem('produit', JSON.stringify(productInLocalStorage))
-        //location.reload()
-      //})
+    //for (let m =0; m < productInLocalStorage.length; m++) {
+    //btnBagDelete.addEventListener('click', () => {
+    //productInLocalStorage.splice(m, 1)
+    //localStorage.setItem('produit', JSON.stringify(productInLocalStorage))
+    // if (productInLocalStorage.value = null) {
+    //localStorage.removeItem('produit')
+    //localStorage.removeItem('totalPrice')
+    //location.reload()
+    // } else {
+    //location.reload()
+    //}
+
+    //item.quantity -= 1
+    //console.log(productInLocalStorage)
+    //localStorage.setItem('produit', JSON.stringify(productInLocalStorage))
+    //location.reload()
+    //})
     //}
   }
 }
@@ -119,23 +121,23 @@ const displayValidationForm = () => {
   <div class="div-order-form" id="formOrder">
   <h3>Remplissez le formulaire pour valider la commande</h3>
   <form action="" class="formDetails">
-  <label for="name">Nom :</label>
-  <input type="text" name="nom" id="nom" required>
+  <div class="validation-input"><label for="name">Nom :</label>
+  <input type="text" name="nom" id="nom" value="Votre nom" required></div>
 
-  <label for="firstName">Prénom :</label>
-  <input type="text" name="prénom" id="prenom" required>
+  <div class="validation-input"><label for="firstName">Prénom :</label>
+  <input type="text" name="prénom" id="prenom" value="Votre prénom" required></div>
 
-  <label for="email">E-mail :</label>
-  <input type="email" name="email" id="mail" required>
+  <div class="validation-input"><label for="email">E-mail :</label>
+  <input type="email" name="email" id="mail" value="Votre adresse mail" required></div>
 
-  <label for="mobile">Téléphone :</label>
-  <input type="tel" name="mobile" id="telephone" required>
+  <div class="validation-input"><label for="mobile">Téléphone :</label>
+  <input type="tel" name="mobile" id="telephone" value="Votre numéro de téléphone" required></div>
 
-  <label for="adresse" name="adresse">Adresse de livraison :</label>
-  <textarea name="adresse" id="adresse" cols="30" rows="5"></textarea>
+  <div class="validation-input"><label for="adresse" name="adresse">Adresse de livraison :</label>
+  <textarea name="adresse" id="adresse" value="Votre adresse" cols="30" rows="5"></textarea></div>
 
-  <label for="deliveryDate">Date de livraison souhaitée :</label>
-  <input type="date" name="deliveryDate" id="deliveryDate" required>
+  <div class="validation-input"><label for="deliveryDate">Date de livraison souhaitée :</label>
+  <input type="date" name="deliveryDate" id="deliveryDate" required></div>
 
   <button class="submitButton">Commander</button>
 </form>

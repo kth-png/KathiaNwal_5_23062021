@@ -34,18 +34,20 @@
         </nav>
     </header>
     <main>
-        <div id="container-product-bag">
+        <div id="cart-container">
             <h2>Votre panier</h2>
-            <div id="product-info" class="product-infos bag-bold">
-                <p class="name">Article</p>
-                <p class="option">Finition</p>
-                <p class="quantity">Quantité</p>
-                <p class="price">Prix</p>
-                <button class="deleteAll">Vider le panier</button>
+            <div id="container-product-bag">
+                <div id="product-info" class="product-infos bag-bold empty">
+                    <p class="name">Article</p>
+                    <p class="option">Finition</p>
+                    <p class="quantity">Quantité</p>
+                    <p class="price">Prix</p>
+                    <button class="deleteAll">Vider le panier</button>
+                </div>
             </div>
         </div>
         <div class="total" id="totalToPay">
-            <h3>Total à règler</h3>
+            <h3>Total à régler :</h3>
             <span class="totalPrice"></span>
         </div>
 
@@ -62,7 +64,7 @@
     </footer>
     <script src="./JS/index.js"></script>
     <script src="./JS/bag.js"></script>
-   
+
 </body>
 
 </html>
