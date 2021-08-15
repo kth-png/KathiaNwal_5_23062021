@@ -92,12 +92,6 @@ a:hover {
   color: var(--primary-color);
 }
 
-/*li a {
-  display: flex;
-  align-items: center;
-  margin: 10px 10px;
-}*/
-
 .article-info span {
   padding-left: 20px;
   margin-right: 5px;
@@ -272,9 +266,6 @@ div.select {
   margin-bottom: 1rem;
 }
 
-/*.empty {
-  margin-bottom: 0;
-}*/
 .product-infos p {
   width: 20%;
   text-align: center;

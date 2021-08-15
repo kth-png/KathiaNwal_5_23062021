@@ -75,41 +75,6 @@ else {
       location.reload()
     })
 
-    //écoute du bouton supprimer et suppression de l'article sélectionné du panier
-    //let productInLocalStorage = JSON.parse(localStorage.getItem('produit'))
-    //let btnBagDeleteGroup = document.getElementsByClassName(".btnBagDelete")
-    //function removeOneArticle(){
-    //for (let m= 0; m < productInLocalStorage.length; m++){
-    //let productIndex = productInLocalStorage.indexOf(m);
-    //productInLocalStorage.splice(productIndex, 1)
-    //localStorage.setItem('produit', JSON.stringify(productInLocalStorage))
-    //location.reload()
-    //}
-    //}
-    /*for (btnBagDelete in btnBagDeleteGroup){
-      btnBagDelete.addEventListener('click', () => {
-        removeOneArticle()
-      })
-    }*/
-
-    //for (let m =0; m < productInLocalStorage.length; m++) {
-    //btnBagDelete.addEventListener('click', () => {
-    //productInLocalStorage.splice(m, 1)
-    //localStorage.setItem('produit', JSON.stringify(productInLocalStorage))
-    // if (productInLocalStorage.value = null) {
-    //localStorage.removeItem('produit')
-    //localStorage.removeItem('totalPrice')
-    //location.reload()
-    // } else {
-    //location.reload()
-    //}
-
-    //item.quantity -= 1
-    //console.log(productInLocalStorage)
-    //localStorage.setItem('produit', JSON.stringify(productInLocalStorage))
-    //location.reload()
-    //})
-    //}
   }
 }
 
