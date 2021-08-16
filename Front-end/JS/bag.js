@@ -60,7 +60,7 @@ else {
     let totalPrice = document.querySelector('.totalPrice')
     totalPrice.innerHTML = `${sum} €`
 
-    //créer un bouton de redirection vers la page de l'article 
+    //créer un bouton de redirection vers la page de l'article
     let btnBag = createNode('button')
     append(info, btnBag)
     btnBag.classList.add('btn-bag')
@@ -89,20 +89,23 @@ const displayValidationForm = () => {
   <div class="div-order-form" id="formOrder">
   <h3>Remplissez le formulaire pour valider la commande</h3>
   <form action="" class="formDetails">
-  <div class="validation-input"><label for="name">Nom :</label>
-  <input type="text" name="nom" id="nom" value="Votre nom" required></div>
-
   <div class="validation-input"><label for="firstName">Prénom :</label>
-  <input type="text" name="prénom" id="prenom" value="Votre prénom" required></div>
+  <input type="text" name="prénom" id="firstName" value="Votre prénom" required></div>
 
-  <div class="validation-input"><label for="email">E-mail :</label>
-  <input type="email" name="email" id="mail" value="Votre adresse mail" required></div>
+  <div class="validation-input"><label for="name">Nom :</label>
+  <input type="text" name="nom" id="lastName" value="Votre nom" required></div>
 
   <div class="validation-input"><label for="mobile">Téléphone :</label>
   <input type="tel" name="mobile" id="telephone" value="Votre numéro de téléphone" required></div>
 
   <div class="validation-input"><label for="adresse" name="adresse">Adresse de livraison :</label>
-  <textarea name="adresse" id="adresse" value="Votre adresse" cols="30" rows="5"></textarea></div>
+  <textarea name="adresse" id="adress" value="Votre adresse" cols="30" rows="5"></textarea></div>
+
+  <div class="validation-input"><label for="city">Ville :</label>
+  <input type="text" name="ville" id="city" value="Ville" required></div>
+
+  <div class="validation-input"><label for="email">E-mail :</label>
+  <input type="email" name="email" id="email" value="Votre adresse mail" required></div>
 
   <div class="validation-input"><label for="deliveryDate">Date de livraison souhaitée :</label>
   <input type="date" name="deliveryDate" id="deliveryDate" required></div>
@@ -125,11 +128,12 @@ if (productSaveInLocalStorage != null) {
 
     //mettre les infos de l'utilisateur dans une variable
     const userInfos = {
-      nom: document.querySelector('#nom').value,
-      prenom: document.querySelector('#prenom').value,
-      mail: document.querySelector('#mail').value,
+      firstName: document.querySelector('#firstName').value,
+      lastName: document.querySelector('#lastName').value,
       telephone: document.querySelector('#telephone').value,
-      adresse: document.querySelector('#adresse').value,
+      adress: document.querySelector('#adress').value,
+      city: document.querySelector('#city').value,
+      email: document.querySelector('#email').value,
       deliveryDate: document.querySelector('#deliveryDate').value,
     }
     /***************************Validation du formulaire***********************************/
@@ -139,7 +143,7 @@ if (productSaveInLocalStorage != null) {
       return /^[a-zA-Z\s*-]{3,20}$/.test(value)
     }
     function nameControl() {
-      const userName = userInfos.nom
+      const userName = userInfos.lastName
       if (regexNameFirstname(userName)) {
         return true
       } else {
@@ -151,12 +155,24 @@ if (productSaveInLocalStorage != null) {
     }
 
     function firstnameControl() {
-      const userFirstname = userInfos.prenom
+      const userFirstname = userInfos.firstName
       if (regexNameFirstname(userFirstname)) {
         return true
       } else {
         alert(
           'Le prénom doit contenir minimum 3 caractères et ne doit pas dépasser 20 caractères \n Les chiffres et les symboles ne sont pas autorisés',
+        )
+        return false
+      }
+    }
+
+    function cityControl() {
+      const userCity = userInfos.city
+      if (regexNameFirstname(userCity)) {
+        return true
+      } else {
+        alert(
+          'La ville doit contenir minimum 3 caractères et ne doit pas dépasser 20 caractères \n Les chiffres et les symboles ne sont pas autorisés',
         )
         return false
       }
@@ -169,7 +185,7 @@ if (productSaveInLocalStorage != null) {
       )
     }
     function emailControl() {
-      const userEmail = userInfos.mail
+      const userEmail = userInfos.email
       if (regexEmail(userEmail)) {
         return true
       } else {
@@ -199,7 +215,7 @@ if (productSaveInLocalStorage != null) {
       return /^\d+\s[A-z]+\s[A-z]+/g.test(adress)
     }
     function adressControl() {
-      const userAdress = userInfos.adresse
+      const userAdress = userInfos.adress
       if (regexAdress(userAdress)) {
         return true
       } else {
@@ -217,31 +233,57 @@ if (productSaveInLocalStorage != null) {
     if (
       nameControl() &&
       firstnameControl() &&
+      cityControl() &&
       emailControl() &&
       phonenbControl() &&
       adressControl()
     ) {
       localStorage.setItem('userInfos', JSON.stringify(userInfos))
-      
+
       localStorage.setItem('uniqId', JSON.stringify(uniqId))
 
       //Rediriger l'utilisateur vers la page de confirmation lorsque toutes les infos sont correctes
       window.location.assign('confirmation.html')
     }
 
+    
     //mettre les produits et les infos du clients présents dans le local storage dans un objet en vue de les envoyer au serveur
     const dataToServer = {
       productSaveInLocalStorage,
       userInfos,
-      uniqId
     }
-  
+    console.log(dataToServer)
+
+    //envoyer le contenu du local storage au serveur
+     const promise01 = fetch('https://jsonplaceholder.typicode.com/users', {
+       method: 'POST',
+       body: JSON.stringify(dataToServer),
+       headers: {
+         'Accept': 'application/json',
+         'Content-Type': 'application/json',
+       },
+     })
+    //  promise01.then(async (response) => {
+    //    try {
+    //      console.log("response");
+    //      console.log(response)
+    //      const content = await response.json()
+    //      console.log("content");
+    //      console.log(content);
+    //    } catch (e) {
+    //      console.log(e)
+    //    }
+    //    console.log(promise01)
+    //  })
   })
-   if (dataLocalStorage != null)
-    {fillWithDatasInLocalStorage('nom')
-    fillWithDatasInLocalStorage('prenom')
-    fillWithDatasInLocalStorage('mail')
+  if (dataLocalStorage != null) {
+    fillWithDatasInLocalStorage('firstName')
+    fillWithDatasInLocalStorage('lastName')
+    fillWithDatasInLocalStorage('email')
     fillWithDatasInLocalStorage('telephone')
-    fillWithDatasInLocalStorage('adresse')
-    fillWithDatasInLocalStorage('deliveryDate')}
+    fillWithDatasInLocalStorage('city')
+    fillWithDatasInLocalStorage('adress')
+    fillWithDatasInLocalStorage('deliveryDate')
+  }
+
 }
