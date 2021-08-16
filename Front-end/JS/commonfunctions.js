@@ -14,6 +14,15 @@ const addLocalStorage = (obj) => {
   productSaveInLocalStorage.push(obj)
   localStorage.setItem('produit', JSON.stringify(productSaveInLocalStorage))
 }
+//mettre les produits du panier dans une variable
+let products = []
+
+for (id of productSaveInLocalStorage) {
+  productId = id.myId
+  products.push(productId)
+}
+// mettre les infos contact du local storage dans une variable
+let contact = JSON.parse(localStorage.getItem('userInfos'))
 
 //Remplir les champs du formulaire avec les données enregistrées dans le local storage
 //transformer la chaine de caractère en objet javascript

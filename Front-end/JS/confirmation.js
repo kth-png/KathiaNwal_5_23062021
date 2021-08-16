@@ -8,7 +8,7 @@ userInfos = JSON.parse(localStorage.getItem("userInfos"))
 totalPrice = JSON.parse(localStorage.getItem("totalPrice"))
 
 //récupération de l'ID commande dans le local storage
-uniqId = JSON.parse(localStorage.getItem("uniqId"))
+orderId = localStorage.getItem("orderId")
 
 //appeler l'emplacement d'affichage 
 let confirmContainer = document.querySelector("#confirmContainer")
@@ -17,4 +17,4 @@ let confirmContainer = document.querySelector("#confirmContainer")
 let message = createNode("p")
 message.classList.add("confirmation-p")
 append(confirmContainer, message)
-message.innerHTML = `<span class="userName">${userInfos.firstName}</span>, toute l'équipe de <span class="elogo confirmLogo">Orifurnit</span> vous remercie pour la commande n° <b>${uniqId}</b>, d'un montant total de <b>${totalPrice}€</b>. <br> <br> <br> A bientôt sur les sites du groupe Orinoco.`
+message.innerHTML = `<span class="userName">${userInfos.firstName}</span>, toute l'équipe de <span class="elogo confirmLogo">Orifurnit</span> vous remercie pour votre achat d'un montant total de <b>${totalPrice}€</b>. <br> <br> L'identifiant de votre commande est: <b>${orderId}</b> <br> <br> A bientôt sur les sites du groupe Orinoco.`

@@ -88,7 +88,7 @@ const displayValidationForm = () => {
   const formStructure = `
   <div class="div-order-form" id="formOrder">
   <h3>Remplissez le formulaire pour valider la commande</h3>
-  <form action="" class="formDetails">
+  <form action="" id="form1" class="formDetails">
   <div class="validation-input"><label for="firstName">Prénom :</label>
   <input type="text" name="prénom" id="firstName" value="Votre prénom" required></div>
 
@@ -96,10 +96,10 @@ const displayValidationForm = () => {
   <input type="text" name="nom" id="lastName" value="Votre nom" required></div>
 
   <div class="validation-input"><label for="mobile">Téléphone :</label>
-  <input type="tel" name="mobile" id="telephone" value="Votre numéro de téléphone" required></div>
+  <input type="tel" name="mobile" id="telephone" value="Votre numéro de téléphone"></div>
 
-  <div class="validation-input"><label for="adresse" name="adresse">Adresse de livraison :</label>
-  <textarea name="adresse" id="adress" value="Votre adresse" cols="30" rows="5"></textarea></div>
+  <div class="validation-input"><label for="address" name="adresse">Adresse de livraison :</label>
+  <textarea name="adresse" id="address" value="Votre adresse" cols="30" rows="5"></textarea></div>
 
   <div class="validation-input"><label for="city">Ville :</label>
   <input type="text" name="ville" id="city" value="Ville" required></div>
@@ -108,9 +108,9 @@ const displayValidationForm = () => {
   <input type="email" name="email" id="email" value="Votre adresse mail" required></div>
 
   <div class="validation-input"><label for="deliveryDate">Date de livraison souhaitée :</label>
-  <input type="date" name="deliveryDate" id="deliveryDate" required></div>
+  <input type="date" name="deliveryDate" id="deliveryDate"></div>
 
-  <button class="submitButton">Commander</button>
+  <button class="submitButton" form="form1" type="submit">Commander</button>
 </form>
 </div>`
 
@@ -131,7 +131,7 @@ if (productSaveInLocalStorage != null) {
       firstName: document.querySelector('#firstName').value,
       lastName: document.querySelector('#lastName').value,
       telephone: document.querySelector('#telephone').value,
-      adress: document.querySelector('#adress').value,
+      address: document.querySelector('#address').value,
       city: document.querySelector('#city').value,
       email: document.querySelector('#email').value,
       deliveryDate: document.querySelector('#deliveryDate').value,
@@ -211,12 +211,12 @@ if (productSaveInLocalStorage != null) {
     }
 
     //controle de la validité de l'adresse
-    const regexAdress = (adress) => {
-      return /^\d+\s[A-z]+\s[A-z]+/g.test(adress)
+    const regexAddress = (address) => {
+      return /^\d+\s[A-z]+\s[A-z]+/g.test(address)
     }
     function adressControl() {
-      const userAdress = userInfos.adress
-      if (regexAdress(userAdress)) {
+      const userAddress = userInfos.address
+      if (regexAddress(userAddress)) {
         return true
       } else {
         alert(
@@ -227,7 +227,7 @@ if (productSaveInLocalStorage != null) {
     }
 
     //création d'un id de commande
-    let uniqId = Math.random().toString(36).substring(2, 15)
+    //let uniqId = Math.random().toString(36).substring(2, 15)
 
     //envoyer les userInfos dans le localStorage si les données saisies sont valides
     if (
@@ -239,42 +239,34 @@ if (productSaveInLocalStorage != null) {
       adressControl()
     ) {
       localStorage.setItem('userInfos', JSON.stringify(userInfos))
-
-      localStorage.setItem('uniqId', JSON.stringify(uniqId))
-
-      //Rediriger l'utilisateur vers la page de confirmation lorsque toutes les infos sont correctes
-      window.location.assign('confirmation.html')
     }
-
-    
     //mettre les produits et les infos du clients présents dans le local storage dans un objet en vue de les envoyer au serveur
-    const dataToServer = {
-      productSaveInLocalStorage,
-      userInfos,
+    const orderFurniture = {
+      contact,
+      products,
     }
-    console.log(dataToServer)
 
-    //envoyer le contenu du local storage au serveur
-     const promise01 = fetch('https://jsonplaceholder.typicode.com/users', {
-       method: 'POST',
-       body: JSON.stringify(dataToServer),
-       headers: {
-         'Accept': 'application/json',
-         'Content-Type': 'application/json',
-       },
-     })
-    //  promise01.then(async (response) => {
-    //    try {
-    //      console.log("response");
-    //      console.log(response)
-    //      const content = await response.json()
-    //      console.log("content");
-    //      console.log(content);
-    //    } catch (e) {
-    //      console.log(e)
-    //    }
-    //    console.log(promise01)
-    //  })
+    //envoyer  au serveur
+
+    const promise01 = fetch('http://localhost:3000/api/furniture/order', {
+      method: 'POST',
+      body: JSON.stringify(orderFurniture),
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    })
+    promise01
+      .then((response) => response.json())
+      .then((orderFurniture) => {
+        console.log("orderFurniture");
+        console.log(orderFurniture);
+        localStorage.setItem('orderId', orderFurniture.orderId)
+
+        //Rediriger l'utilisateur vers la page de confirmation lorsque toutes les infos sont correctes
+        window.location = 'confirmation.html'
+      })
+      .catch((error) => console.log(error))
   })
   if (dataLocalStorage != null) {
     fillWithDatasInLocalStorage('firstName')
@@ -282,8 +274,7 @@ if (productSaveInLocalStorage != null) {
     fillWithDatasInLocalStorage('email')
     fillWithDatasInLocalStorage('telephone')
     fillWithDatasInLocalStorage('city')
-    fillWithDatasInLocalStorage('adress')
+    fillWithDatasInLocalStorage('address')
     fillWithDatasInLocalStorage('deliveryDate')
   }
-
 }
