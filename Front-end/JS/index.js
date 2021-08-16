@@ -1,15 +1,3 @@
-//Fonction création d'un nouvel élément dans le DOM
-function createNode(element) {
-  return document.createElement(element)
-}
-//Fonction nest d'un élément "el" à l'élément "parent"
-function append(parent, el) {
-  return parent.appendChild(el)
-}
-//Fonction de redirection
-//function redirect() {
- // document.location.href = page
-//}
 const page = 'produit.html'
 const ul = document.getElementById('furnitures')
 let url = 'http://localhost:3000/api/furniture'
@@ -22,7 +10,6 @@ fetch(url)
     let furnitures = data
     //Boucle de récupération des données
     for (let f = 0; f < furnitures.length; f++) {
-
       //création des éléments pour afficher les données
       let link = createNode('a')
       link.href = `${page}?id=${furnitures[f]._id}`
@@ -76,17 +63,8 @@ fetch(url)
           price: furnitures[f].price / 100,
         }
         //---------------Local storage---------------
-        let productSaveInLocalStorage = JSON.parse(
-          localStorage.getItem('produit'),
-        )
-        //fonction ajout du produit sélectionné au local storage
-        const addLocalStorage = () => {
-          productSaveInLocalStorage.push(selectFromHomepage)
-          localStorage.setItem(
-            'produit',
-            JSON.stringify(productSaveInLocalStorage),
-          )
-        }
+ 
+     
         //fonction message de confirmation
         const confirmMessage = () => {
           if (
@@ -98,11 +76,11 @@ fetch(url)
           }
         }
         if (productSaveInLocalStorage) {
-          addLocalStorage()
+          addLocalStorage(selectFromHomepage)
           confirmMessage()
         } else {
           productSaveInLocalStorage = []
-          addLocalStorage()
+          addLocalStorage(selectFromHomepage)
           confirmMessage()
         }
       })
@@ -111,4 +89,7 @@ fetch(url)
   //Message d'erreur
   .catch(function (error) {
     console.log(error)
+    const errorPage = '404.html'
+    window.location.href = errorPage
   })
+  

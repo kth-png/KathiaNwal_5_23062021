@@ -1,8 +1,6 @@
-//Stockage du contenu du local storage dans une variable productSaveInLocalStorage
-let productSaveInLocalStorage = JSON.parse(localStorage.getItem('produit'))
-
 let nBag = document.querySelector('#product-info')
 let totalToPay = document.querySelector('#totalToPay')
+
 //si le panier est vide afficher le panier est vide
 if (productSaveInLocalStorage === null) {
   const panierVide = `
@@ -12,10 +10,11 @@ if (productSaveInLocalStorage === null) {
     `
   nBag.innerHTML = panierVide
   totalToPay.innerHTML = null
-  document.getElementById("totalToPay").style.display = "none";
-  document.getElementById("product-info").style.marginBottom = "0"
-  document.getElementById("product-infos").style.marginBottom = "0" 
+  document.getElementById('totalToPay').style.display = 'none'
+  document.getElementById('product-info').style.marginBottom = '0'
+  document.getElementById('product-infos').style.marginBottom = '0'
 }
+
 //sinon afficher le contenu du localstorage
 else {
   let bagLayout = []
@@ -44,13 +43,15 @@ else {
     append(info, productInBagPrice)
     productInBagPrice.classList.add('price')
 
-    //calcul du prix total et affichage dans la page panier
+    //calcul du prix total par article et affichage dans la page panier
     productInBagPrice.innerHTML = `${
       productSaveInLocalStorage[j].price * productSaveInLocalStorage[j].quantity
     } €`
     let pricesInBag =
       productSaveInLocalStorage[j].price * productSaveInLocalStorage[j].quantity
     bagLayout.push(pricesInBag)
+
+    //calcul du prix total du panier et affichage dans la page panier
     let sum = 0
     for (let l = 0; l < bagLayout.length; l++) {
       sum += bagLayout[l]
@@ -59,6 +60,7 @@ else {
     let totalPrice = document.querySelector('.totalPrice')
     totalPrice.innerHTML = `${sum} €`
 
+    //créer un bouton de redirection vers la page de l'article 
     let btnBag = createNode('button')
     append(info, btnBag)
     btnBag.classList.add('btn-bag')
@@ -70,11 +72,12 @@ else {
 
     //écoute du bouton vider le panier et suppression du panier
     const clearCart = document.querySelector('.deleteAll')
-    clearCart.addEventListener('click', () => {
+    clearCart.addEventListener('click', (del) => {
+      del.stopPropagation()
+      del.preventDefault()
       localStorage.clear()
       location.reload()
     })
-
   }
 }
 
@@ -207,6 +210,9 @@ if (productSaveInLocalStorage != null) {
       }
     }
 
+    //création d'un id de commande
+    let uniqId = Math.random().toString(36).substring(2, 15)
+
     //envoyer les userInfos dans le localStorage si les données saisies sont valides
     if (
       nameControl() &&
@@ -216,11 +222,10 @@ if (productSaveInLocalStorage != null) {
       adressControl()
     ) {
       localStorage.setItem('userInfos', JSON.stringify(userInfos))
-      //création d'un id de commande
-      let uniqId = Math.random().toString(36).substring(2, 15)
+      
       localStorage.setItem('uniqId', JSON.stringify(uniqId))
 
-      //Rediriger l'utilisateur vers la page de confirmation lorsque toutes les infos le permettent
+      //Rediriger l'utilisateur vers la page de confirmation lorsque toutes les infos sont correctes
       window.location.assign('confirmation.html')
     }
 
@@ -228,21 +233,15 @@ if (productSaveInLocalStorage != null) {
     const dataToServer = {
       productSaveInLocalStorage,
       userInfos,
-      uniqId,
+      uniqId
     }
+  
   })
-  //Remplir les champs du formulaire avec les données enregistrées dans le local storage
-  //transformer la chaine de caractère en objet javascript
-  const dataLocalStorage = JSON.parse(localStorage.getItem('userInfos'))
-
-  //fonction pour remplir les champs du formulaire avec les données stockées dans le local storage
-  function fillWithDatasInLocalStorage(key) {
-    document.querySelector(`#${key}`).value = dataLocalStorage[key]
-  }
-  fillWithDatasInLocalStorage('nom')
-  fillWithDatasInLocalStorage('prenom')
-  fillWithDatasInLocalStorage('mail')
-  fillWithDatasInLocalStorage('telephone')
-  fillWithDatasInLocalStorage('adresse')
-  fillWithDatasInLocalStorage('deliveryDate')
+   if (dataLocalStorage != null)
+    {fillWithDatasInLocalStorage('nom')
+    fillWithDatasInLocalStorage('prenom')
+    fillWithDatasInLocalStorage('mail')
+    fillWithDatasInLocalStorage('telephone')
+    fillWithDatasInLocalStorage('adresse')
+    fillWithDatasInLocalStorage('deliveryDate')}
 }

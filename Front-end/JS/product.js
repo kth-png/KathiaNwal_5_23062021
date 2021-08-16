@@ -135,17 +135,7 @@ fetch(productUrl)
       }
 
       //---------------Local storage---------------
-      let productSaveInLocalStorage = JSON.parse(
-        localStorage.getItem('produit'),
-      )
-      //fonction ajout de produits sélectionnés au local storage
-      const addLocalStorage = () => {
-        productSaveInLocalStorage.push(productOptions)
-        localStorage.setItem(
-          'produit',
-          JSON.stringify(productSaveInLocalStorage),
-        )
-      }
+
       //fonction message de confirmation
       const confirmMessage = () => {
         if (
@@ -157,11 +147,11 @@ fetch(productUrl)
         }
       }
       if (productSaveInLocalStorage) {
-        addLocalStorage()
+        addLocalStorage(productOptions)
         confirmMessage()
       } else {
         productSaveInLocalStorage = []
-        addLocalStorage()
+        addLocalStorage(productOptions)
         confirmMessage()
       }
     })

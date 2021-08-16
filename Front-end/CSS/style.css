@@ -370,3 +370,12 @@ b {
   font-size: 1.3rem;
   text-transform: uppercase;
 }
+
+
+/*************************************** 404 ***************************************/
+#error {
+  font-size: x-large;
+  font-weight: bold;
+  text-align: center;
+  margin: 4rem
+}

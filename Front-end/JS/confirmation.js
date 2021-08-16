@@ -17,4 +17,4 @@ let confirmContainer = document.querySelector("#confirmContainer")
 let message = createNode("p")
 message.classList.add("confirmation-p")
 append(confirmContainer, message)
-message.innerHTML = `<span class="userName">${userInfos.prenom}</span>, toute l'équipe de <span class="elogo confirmLogo">Orifurnit</span> vous remercie pour la commande n°<b>${uniqId}</b>, d'un montant total de <b>${totalPrice}€</b>. <br> <br> <br> A bientôt sur les sites du groupe Orinoco.`
+message.innerHTML = `<span class="userName">${userInfos.prenom}</span>, toute l'équipe de <span class="elogo confirmLogo">Orifurnit</span> vous remercie pour la commande n° <b>${uniqId}</b>, d'un montant total de <b>${totalPrice}€</b>. <br> <br> <br> A bientôt sur les sites du groupe Orinoco.`
