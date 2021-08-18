@@ -1,0 +1,389 @@
+:root {
+  --primary-color: rgb(36, 36, 36);
+  --secondary-color: #f3e9f1;
+}
+
+body {
+  font-family: "Nunito", sans-serif !important;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--secondary-color);
+  padding: 0 20px 0 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+footer {
+  margin-top: 3rem;
+}
+
+button {
+  border: none;
+  border-radius: 10px;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  font-size: 0.8rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 0.2rem 1.5rem;
+}
+.footer {
+  background-color: var(--secondary-color);
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.footer img {
+  max-width: 170px;
+}
+
+.eshop {
+  display: inline-block;
+}
+
+.eshop .elogo {
+  font-size: 2rem;
+}
+nav {
+  width: 30%;
+  max-width: 180px;
+}
+
+nav ul {
+  text-align: center;
+  font-weight: bold;
+}
+
+.logo {
+  width: 18%;
+}
+.nav-menu {
+  display: flex;
+  justify-content: space-between;
+}
+.title {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+h1 {
+  font-weight: bold;
+  margin: 1rem 0 1rem;
+}
+
+.home-article {
+  text-align: center;
+}
+.card img {
+  max-height: 179.4px;
+  object-fit: cover;
+}
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 1rem 0;
+}
+a,
+a:hover {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+.article-info span {
+  padding-left: 20px;
+  margin-right: 5px;
+  white-space: nowrap;
+}
+.article-info {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 5px;
+}
+
+.fig-width {
+  width: 25%;
+  min-width: 210px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: calc(0.25rem - 1px);
+  margin: 0 1rem 2rem;
+  padding-bottom: 0.5rem;
+}
+
+figure img {
+  object-fit: cover;
+}
+
+.furnitures-layout {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+figcaption p {
+  margin-left: 5px;
+  max-width: 70%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-weight: bold;
+}
+
+figure {
+  margin: 0;
+}
+
+.home-figure {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.btn-add-to-cart {
+  margin: 0 15px 0 15px;
+}
+.img-display {
+  max-width: 100%;
+}
+
+main .container {
+  width: 60%;
+}
+
+.elogo {
+  font-family: "belligerent_madnessregular", Arial, sans-serif;
+  font-size: 4rem;
+  padding-left: 40px;
+  margin-bottom: 15px;
+}
+
+.divTitle {
+  margin-bottom: 2rem;
+}
+.divTitle span,
+.unit {
+  font-weight: lighter;
+  font-size: smaller;
+}
+.divTitle h2 {
+  margin: 0;
+}
+
+.divImg {
+  display: flex;
+  grid-gap: 4%;
+}
+
+.formProduct > * {
+  margin-top: 2rem;
+}
+
+.divPers,
+.divPrice,
+.divAddBag {
+  display: flex;
+  flex-direction: column;
+}
+
+.divPers > * {
+  min-width: 290px;
+}
+
+.divPers p {
+  text-align: justify;
+}
+.divAddBag {
+  align-items: center;
+}
+#addBasket {
+  width: 40%;
+}
+
+.divPrice h3,
+.divPrice span {
+  text-align: end;
+  margin-bottom: 0 !important;
+}
+
+div.select {
+  display: flex;
+  justify-content: space-between;
+}
+
+.addBasket {
+  border-radius: 10px;
+  background-color: var(--primary-color);
+  color: white;
+  border: 1px solid var(--primary-color);
+}
+
+@media (max-width: 397px) {
+  header {
+    flex-direction: column;
+    padding-bottom: 1rem;
+  }
+  nav {
+    width: 50%;
+  }
+
+  nav ul {
+    margin: 0;
+  }
+  p.logo {
+    font-size: 3rem;
+  }
+
+  .elogo {
+    padding-left: 0;
+  }
+
+  .deleteAll,
+  .btn-bag {
+    display: none;
+  }
+}
+
+@media (max-width: 993px) {
+  div.artMedia,
+  .center {
+    display: flex;
+    flex-direction: column !important;
+    align-items: center;
+  }
+}
+/*-------------------------- BAG.HTML ------------------------------*/
+#cart-container h2 {
+  font-weight: bold;
+  text-align: center;
+  margin: 3rem 0 3rem 0;
+}
+.product-infos {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.product-infos p {
+  width: 20%;
+  text-align: center;
+  margin-bottom: 0 !important;
+  white-space: nowrap;
+  text-overflow: clip;
+  overflow: scroll;
+}
+
+.bag-bold {
+  font-weight: bold;
+}
+
+.btn-bag,
+.deleteAll {
+  min-width: 117px;
+}
+
+#totalToPay {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 3rem 1rem;
+  background-color: var(--secondary-color);
+  padding: 1rem;
+}
+
+#container-product-bag {
+  border: solid 2px var(--secondary-color);
+  margin: 0 15px;
+  padding: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  background-color: var(--secondary-color);
+}
+
+#totalToPay h3 {
+  margin-bottom: 0;
+}
+
+#linkToProductPage {
+  text-decoration: underline;
+}
+
+#linkToProductPage:hover {
+  cursor: pointer;
+  font-weight: bold;
+}
+/*********************** Formulaire de validation commande ******************/
+#formOrder {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  grid-gap: 2rem;
+  align-items: center;
+}
+
+#formOrder h3 {
+  text-align: center;
+}
+
+.formDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  grid-gap: 1rem;
+}
+
+.validation-input {
+  display: flex;
+  /*align-items: center;*/
+  justify-content: center;
+  width: 100%;
+  grid-gap: 0.5rem;
+}
+
+.submitButton {
+  margin-top: 1rem;
+}
+
+.validation-input label {
+  width: 30%;
+}
+input,
+textarea {
+  width: 55%;
+  min-width: 166px;
+  border-radius: 3px;
+}
+
+/********************************** Page de confirmation *************************/
+#confirmContainer {
+  margin: 3rem;
+}
+
+.confirmation-p {
+  text-align: center;
+}
+
+.userName {
+  text-transform: uppercase;
+  font-size: 1.8rem;
+}
+.elogo.confirmLogo {
+  font-size: 1.8rem !important;
+  padding-left: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+b {
+  font-size: 1.3rem;
+  text-transform: uppercase;
+}
+
+/*************************************** 404 ***************************************/
+#error {
+  font-size: x-large;
+  font-weight: bold;
+  text-align: center;
+  margin: 4rem;
+}
