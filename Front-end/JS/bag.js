@@ -75,16 +75,6 @@ else {
     let totalPrice = document.querySelector(".totalPrice");
     totalPrice.innerHTML = `${sum} €`;
 
-    //ajouter un lien vers la page de l'article sélectionné
-    /*let furnitureName = document.querySelector("#linkToProductPage");
-
-    const productPageRedirection = `produit.html?id=${productSaveInLocalStorage[j].myId}`;
-    furnitureName.addEventListener("click", (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      window.location = productPageRedirection;
-    });*/
-
     //écoute du bouton vider le panier et suppression du panier
     const clearCart = document.querySelector(".deleteAll");
     clearCart.addEventListener("click", (del) => {
@@ -305,8 +295,14 @@ if (
           console.log("response2");
           console.log(response2);
           localStorage.setItem("orderId", response2.orderId);
+          
+          //supprimer le panier
+          localStorage.removeItem('produit')
+
           //Rediriger l'utilisateur vers la page de confirmation lorsque toutes les infos sont correctes
           window.location = "confirmation.html";
+
+          
         })
         .catch((error) => console.log(error));
     }

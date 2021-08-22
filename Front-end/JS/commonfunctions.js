@@ -8,7 +8,7 @@ function append(parent, el) {
   return parent.appendChild(el);
 }
 
-//fonction ajout de produits sélectionnés au local storage
+//ajouter le produit sélectionné au local storage
 let productSaveInLocalStorage = JSON.parse(localStorage.getItem("produit"));
 const addLocalStorage = (obj) => {
   productSaveInLocalStorage.push(obj);
@@ -23,8 +23,6 @@ if (productSaveInLocalStorage != null) {
     products.push(productId);
   }
 }
-// mettre les infos contact du local storage dans une variable
-//let contact = JSON.parse(localStorage.getItem("userInfos"));
 
 //Remplir les champs du formulaire avec les données enregistrées dans le local storage
 //transformer la chaine de caractère en objet javascript
@@ -35,5 +33,3 @@ const dataLocalStorage = JSON.parse(localStorage.getItem("userInfos"));
 function fillWithDatasInLocalStorage(key) {
   document.querySelector(`#${key}`).value = dataLocalStorage[key];
 }
-
-//fonction fetch POST
